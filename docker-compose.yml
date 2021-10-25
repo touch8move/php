@@ -1,0 +1,26 @@
+version: '3.9'
+services:
+  web:
+      build: .
+      ports:
+          - 80:80
+          - 2222:2222
+      volumes:
+          - ./:/var/www/html
+          # - ./apache:/etc/apache2/sites-available/
+      links:
+          - mysql
+
+  db:
+    image: mariadb
+    restart: always
+    volumes:
+      - ./data/:/var/lib/mysql/
+    environment:
+      - MYSQL_ROOT_PASSWORD=test
+      - MYSQL_DATABASE=test
+      - MYSQL_USER=admin
+      - MYSQL_PASSWORD=test
+    ports:
+      - 3306:3306
+    command: ["--character-set-server=utf8mb4", "--collation-server=utf8mb4_unicode_ci"]
