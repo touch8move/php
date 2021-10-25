@@ -1,0 +1,29 @@
+Wing FTP Server v6.6.4              Released: 21/Oct/2021
+--------------------------------------------------------------
+Improvement - Now the subfolders in the weblink download page can be accessible.
+Fixed a bug - Cannot show the session list under "Domain > Logs & Status > Activity" when file name contains special characters.
+Fixed a bug - When drag any toolbar button in the web client, the file uploader interface will be popped up.
+Fixed a bug - When the event "OnFileBanned" is triggered in the file upload/download, the server variable "%PathName" or "%FileName" might be empty.
+
+
+Wing FTP Server v6.6.3              Released: 11/Oct/2021
+--------------------------------------------------------------
+Improvement - Add a domain option "TLS session timeout" for TLS session resumption.
+Fixed a bug - Fixed a potential XSS vulnerability in the web client.
+Improvement - Sort up/Sort down icon will disappear when refreshing or changing the directory.
+Improvement - Updated the Help Document for the web client.
+
+
+Wing FTP Server v6.6.2              Released: 14/Sep/2021
+--------------------------------------------------------------
+Improvement - Updated OpenSSL and fixed a few OpenSSL vulnerabilities like CVE-2020-1971, CVE-2021-3712.
+Fixed a bug - When downloading a file in the web client, it will always finish downloading even exceeding disk quota or transfer limitation.
+Fixed a bug - The console application (wftpconsole) can't work correctly, this bug was introduced in v6.5.6.
+Fixed a bug - When uploading an entire folder in the web client, it will always show OK even have no "Create Folder" permission.
+Improvement - When uploading files in the web client, now it will popup an error message if exceeding disk quota or transfer limitation.
+
+
+Wing FTP Server v6.6.1              Released: 31/Aug/2021
+--------------------------------------------------------------
+Added a feature - Now support two-factor authentication (TOTP) for the web client.
+Improvement - When login the S

@@ -30,19 +30,23 @@ $ssh_host = 'demo.wftpserver.com';
 // SSH 업로드
     $remote_file = "/upload/sample.txt";
     $download_file = "/download/version.txt";
+    $filename = "version.txt";
+    $ufilename = "sample2.txt";
 
-    // $localFile =  file_get_contents("/var/www/html/sample.txt");
-    // echo $localFile;
-    // $url = "ssh2.sftp://".intval($sftp).$remote_file;
-    // echo $url;
-    // $stream = fopen($url, 'w');
-    // @fwrite($stream, $localFile);
+    // file download
+    // $stream = @fopen("ssh2.sftp://$sftp_conn$download_file", 'r');
+    // if (! $stream)
+    //     throw new Exception("Could not open file: $download_file");
+    // $contents = fread($stream, filesize("ssh2.sftp://$sftp_conn$download_file")); 
+    // file_put_contents ($filename, $contents);
     // @fclose($stream);
 
-    $stream = @fopen("ssh2.sftp://$sftp_conn$download_file", 'r');
-    if (! $stream)
-        throw new Exception("Could not open file: $download_file");
-    $contents = fread($stream, filesize("ssh2.sftp://$sftp_conn$remote_file")); 
-    file_put_contents ($download_file, $contents);
-    @fclose($stream);
+// file upload
+    $ucontents=file_get_contents("/var/www/html/sample.txt");
+    $ustream = @fopen("ssh2.sftp://$sftp$remote_file", 'w');
+    $size = strlen($ucontents);
+    echo $size;
+    // stream_set_chunk_size($ustream, $size);
+    @fwrite($ustream, $ucontents);
+    @fclose($ustream);
 ?>
