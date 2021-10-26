@@ -4,15 +4,7 @@ RUN set -e; \
   a2enmod headers proxy proxy_http ssl rewrite; \
   apt-get update; \
   apt-get install -y $BUILD_PACKAGES; \
-#   set +e; \
-#   docker-php-ext-install odbc; \
-#   set -e; \
-#   cd /usr/src/php/ext/odbc; \
-#   phpize; \
-#   ./configure /usr; \
-#   cd /root; \
   yes | pecl install ssh2-1.1.2; \
-#   docker-php-ext-configure pdo_odbc --with-pdo-odbc=unixODBC,/usr; \ 
   docker-php-ext-install pdo_mysql mysqli zip; \
   docker-php-ext-enable ssh2; \
   apt-get remove --purge -y $BUILD_PACKAGES && rm -rf /var/lib/apt/lists/*; \
