@@ -1,15 +1,24 @@
 version: '3.9'
 services:
-  web:
-      build: .
-      ports:
-          - 80:80
-          - 2222:2222
+  php:
+      # image: php:7.0.33-fpm-jessie
+      build:
+        context: .
+        dockerfile: ./Dockerfile
+      depends_on: 
+        - db
+      working_dir: /var/www/html
+      # restart: always
       volumes:
           - ./:/var/www/html
           # - ./apache:/etc/apache2/sites-available/
-      links:
-          - mysql
+      
+  apache:
+    image: httpd:2.4
+    ports:
+      - 80:80
+    volumes:
+      - ./:/var/www/html
 
   db:
     image: mariadb
