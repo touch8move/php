@@ -9,8 +9,7 @@
         
         $stream = @fopen("ssh2.sftp://$sftp".$remotefile, 'w');
         $size = strlen($contents);
-        
-        stream_set_chunk_size($stream, $size);
+        // stream_set_chunk_size($stream, $size);
         @fwrite($stream, $contents);
         @fclose($stream);
     }
