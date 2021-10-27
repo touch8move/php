@@ -1,0 +1,7 @@
+FROM php:7.0.33-apache-jessie
+
+RUN apt-get update -y \
+    && apt-get install -y libzip-dev libssh2-1-dev
+RUN pecl install ssh2-1.1.2
+
+RUN docker-php-ext-install pdo_mysql mysqli zip && docker-php-ext-enable ssh2
