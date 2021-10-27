@@ -5,6 +5,9 @@ services:
         context: .
         dockerfile: ./oneall/Dockerfile_php
       working_dir: /var/www/html
+      environment:
+        - LANG=ko_KR.UTF-8
+        - LANGUAGE=ko_KR.UTF-8
       ports:
         - 80:80
       volumes:
