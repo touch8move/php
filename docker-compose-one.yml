@@ -1,0 +1,26 @@
+version: '3.9'
+services:
+  one:
+      build:
+        context: .
+        dockerfile: ./oneall/Dockerfile_php
+      working_dir: /var/www/html
+      ports:
+        - 80:80
+      volumes:
+          - ./:/var/www/html
+          # - ./apache:/etc/apache2/sites-available/
+
+  db:
+    image: mariadb
+    restart: always
+    volumes:
+      - ./data/:/var/lib/mysql/
+    environment:
+      - MYSQL_ROOT_PASSWORD=test
+      - MYSQL_DATABASE=test
+      - MYSQL_USER=admin
+      - MYSQL_PASSWORD=test
+    ports:
+      - 3306:3306
+    command: ["--character-set-server=utf8mb4", "--collation-server=utf8mb4_unicode_ci"]
